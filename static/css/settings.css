@@ -1,0 +1,106 @@
+html, body {
+    width: 100%;
+}
+#layout {
+    margin: auto;
+}
+#layout tr {
+    vertical-align: top;
+}
+#alarms {
+}
+.alarm tr {
+    vertical-align: baseline;
+}
+.message-container {
+    line-height: 15px;
+    height: 15px;
+    text-align: center;
+    color: cornflowerblue;
+}
+.top-message {
+    display: none;
+}
+.pod {
+    border: 2px solid gray;
+    border-radius: 4px;
+    padding: 0.5em;
+}
+.pod .title {
+    font-weight: bold;
+    font-size: large;
+}
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.theme-wrapper {
+    width: 100%;
+}
+.theme-wrapper:hover {
+    background-color: #dda;
+}
+.theme-title {
+    min-width: 200px;
+}
+.theme-description {
+    width: 200px;
+}
+.delete {
+    font-size: smaller;
+    font-family: sans-serif;
+    text-align: right;
+    margin-left: 8px;
+    cursor: pointer;
+}
+.delete span {
+    color: #B0171F;
+}
+.submit {
+    display: block;
+}
+.editable {
+    cursor: pointer;  
+    color: cornflowerblue;
+}
+.addable {
+    cursor: pointer;  
+    background-color: cornflowerblue;
+    color: white;
+}
+
+/* change password */
+.form-container {
+    margin: auto;
+    position: relative;
+    top: 10%;
+    width: 75%;
+}
+.form-container .title {
+    font-weight: bold;
+    font-size: larger;
+    margin-top: 0.4em;
+}
+.form-container .message {
+    font-size: smaller;
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+    color: blue;
+}
+.form-container label {
+    font-weight: bold;
+    margin-top: 0.8em;
+}
+.form-container .input {
+    width: 80%;
+    margin-top: 0.8em;
+}
+.form-container textarea {
+    height: auto;
+    min-height: 125px;
+}
+.form-container .button {
+    display: block;
+    margin-top: 0.8em;
+}

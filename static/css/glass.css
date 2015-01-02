@@ -1,0 +1,40 @@
+#glass {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: white;
+    opacity: 0.7;
+}
+#workbox {
+    display: none;
+    position: fixed;
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 20%;
+    border: 4px solid #888;
+    border-radius: 2px;
+    z-index: 20;
+    background-color: white;
+    overflow: auto;
+}
+.glassclose {
+    font-family: Helvetica, sans-serif;
+    float: right;
+    padding: 0.5em;
+    cursor: pointer;
+}
+.glassclose:hover {
+    background-color: black;
+    color: white;
+}
+#glass-content {
+    width: 90%;
+    height: 90%;
+    overflow: auto;
+    margin: 0.4em;
+}

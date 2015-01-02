@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{# page css #}
+{# ... #}
+{% block page_css %}<link rel="stylesheet" href="/static/css/login.css" type="text/css" />{% endblock %}
+{# page js #}
+{# ... #}
+{% block page_js -%}
+    <script>
+$(window.document).ready(
+    function() {
+        $('#{% if focusid %}{{focusid}}{% else %}email-input{% endif %}').focus();
+    }
+);
+    </script>
+{%- endblock %}
+{# content #}
+{# ... #}
+{% block content -%}
+      <div id="auth-wrapper">
+        <div class="row">
+          <div class="cell">
+            <form method="post" action="/reset">
+              <label for="email">Email</label>
+              <input id="email-input" type="text" name="email" value="{{email}}" class="text" />
+              <input type="submit" name="subby" value="Submit" />
+            </form>
+          </div>
+        </div>
+      </div>
+{%- endblock %}

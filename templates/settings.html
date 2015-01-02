@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% block page_css %}
+    <link rel="stylesheet" href="/static/css/settings.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/glass.css" type="text/css" />
+{% endblock %}
+{% block page_js -%}
+    <script src="/static/js/settings.js"></script>
+    <script src="/static/js/glass.js"></script>
+{%- endblock %}
+{% block header %}
+  {% if user.email != 'anonymous' %}
+      <div class="menu-item"><a href="/logout">Logout</a></div>
+      <div class="menu-item"><a href="/settings">{{user.email}}</a></div>
+  {% else %}
+      <div class="menu-item"><a href="/register">Sign up</a></div>
+      <div class="menu-item"><a href="/login">Login</a></div>
+  {% endif %}
+{% endblock %}
+{% block content -%}
+    <div class="message-container">
+      <div class="top-message"><!--e--></div>
+    </div>
+    <form id="themes-form" method="post" action="/settings">
+      <table id="layout">
+        <tr>
+          <td>
+            <div class="pod">
+              <div class="title"> My Info </div>
+              <div id="change-password-link" class="editable">Change password</div>
+              <div>
+                <label for="time-zone">Time Zone</label>
+{{ gmt() }}
+              </div>
+              <div>
+                <label for="notify"> Notify </div>
+                <select id="notify">
+                  <option value="on"{% if user.notify %} selected{% endif %}>On</option>
+                  <option value="off"{% if not user.notify %} selected{% endif %}>Off</option>
+                </select>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div id="alarms" class="pod">
+              <div class="title"> My Alarms </div>
+              {% for _alarm in alarms -%}
+                {{ alarm(_alarm['orderId'], hour=_alarm['hour'], minute=_alarm['minute'], ampm=_alarm['ampm']) }}
+              {%- endfor %}
+            </div>
+          </td>
+
+          <td>
+            <div id="themes" class="pod">
+              <div class="title"> My Themes</div>
+              {% for theme in themes -%}
+              <table class="theme-wrapper"><tr><td><div id="theme-{{loop.index}}" class="theme editable"> {{theme['title']}} </div></td><td><div class="delete" id="delete-{{loop.index}}"><span>X</span></div></td></tr></table>
+              {%- endfor %}
+              <div class="addable"> Add theme </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+{%- endblock %}
+{% block templates -%}
+        <script id="change-password" type="6xbook/x-template">
+          <table class="form-container">
+            <tr>
+              <td>
+                <div class="title"> Change password </div>
+                <div class="message"> Once you click &quot;Confirm&quot; you will be logged out and will need to logon with the new password. </div>
+                <label for="old-password">Old password</label>
+                <input type="password" class="input" id="old-password" name="old-password" />
+                <label for="new-password">New password</label>
+                <input type="password" class="input" id="new-password" name="new-password" />
+                <label for="confirm-new-password">Confirm new password</label>
+                <input type="password" class="input" id="confirm-new-password" name="confirm-new-password" />
+                <input type="button" class="button" name="save-button" value="Confirm" onclick="Settings.changePassword();" />
+              </td>
+            </tr>
+          </table>
+        </script>
+
+        <script id="change-theme" type="6xbook/x-template">
+          <table class="form-container">
+            <tr>
+              <td>
+                <div class="title"> Change theme </div>
+                <div class="message">  </div>
+                <input type="hidden" id="theme-order-id" name="theme-order-id" value="${theme-order-id}" />
+                <label for="theme-title">Title</label>
+                <input type="text" class="input" id="theme-title" name="theme-title" value="${theme-title}" />
+                <label for="theme-description">Description</label>
+                <textarea id="theme-description" class="input" name="theme-description">${theme-description}</textarea>
+                <input type="button" class="button" name="save-button" value="Save" onclick="Settings.changeTheme();" />
+              </td>
+            </tr>
+          </table>
+        </script>
+
+        <script id="add-theme" type="6xbook/x-template">
+          <table class="form-container">
+            <tr>
+              <td>
+                <div class="title"> Add theme </div>
+                <div class="message">  </div>
+                <label for="theme-title">Title</label>
+                <input type="text" class="input" id="theme-title" name="theme-title" />
+                <label for="theme-description">Description</label>
+                <textarea id="theme-description" class="input" name="theme-description"></textarea>
+                <input type="button" class="button" name="save-button" value="Save" onclick="Settings.addTheme();" />
+              </td>
+            </tr>
+          </table>
+        </script>
+
+        <script id="refresh-themes" type="6xbook/x-template">
+          <table class="theme-wrapper"><tr><td><div id="theme-${index}" class="theme editable"> ${title} </div></td><td><div class="delete" id="delete-${index}"><span>X</span></div></td></tr></table>
+        </script>
+{%- endblock %}
+{% macro alarm(num, hour='8', minute='00', ampm='am') %}
+              <table class="alarm">
+                <tr>
+                  <td colspan="4"> Alarm {{num}}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <select id="alarm-{{num}}-hour">
+                      <option value="01"{% if hour == '1' %} selected{% endif %}>1</option>
+                      <option value="02"{% if hour == '2' %} selected{% endif %}>2</option>
+                      <option value="03"{% if hour == '3' %} selected{% endif %}>3</option>
+                      <option value="04"{% if hour == '4' %} selected{% endif %}>4</option>
+                      <option value="05"{% if hour == '5' %} selected{% endif %}>5</option>
+                      <option value="06"{% if hour == '6' %} selected{% endif %}>6</option>
+                      <option value="07"{% if hour == '7' %} selected{% endif %}>7</option>
+                      <option value="08"{% if hour == '8' %} selected{% endif %}>8</option>
+                      <option value="09"{% if hour == '9' %} selected{% endif %}>9</option>
+                      <option value="10"{% if hour == '10' %} selected{% endif %}>10</option>
+                      <option value="11"{% if hour == '11' %} selected{% endif %}>11</option>
+                      <option value="12"{% if hour == '12' %} selected{% endif %}>12</option>
+                    </select>
+                  </td>
+                  <td>:</td>
+                  <td>
+                    <select id="alarm-{{num}}-minute">
+                      <option value="00"{% if minute == '00' %} selected{% endif %}>00</option>
+                      <option value="15"{% if minute == '15' %} selected{% endif %}>15</option>
+                      <option value="30"{% if minute == '30' %} selected{% endif %}>30</option>
+                      <option value="45"{% if minute == '45' %} selected{% endif %}>45</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select id="alarm-{{num}}-ampm">
+                      <option value="am"{% if ampm == 'am' %} selected{% endif %}>AM</option>
+                      <option value="pm"{% if ampm == 'pm' %} selected{% endif %}>PM</option>
+                    </select>
+                  </td>
+                </tr>
+              </table>
+{% endmacro %}
+{% macro gmt() %}
+                <select id="gmt">
+                  <option value="0"{% if user.gmt == '0' %} selected{% endif %}>GMT+0</option>
+                  <option value="+1"{% if user.gmt == '+1' %} selected{% endif %}>GMT+1</option>
+                  <option value="+2"{% if user.gmt == '+2' %} selected{% endif %}>GMT+2</option>
+                  <option value="+3"{% if user.gmt == '+3' %} selected{% endif %}>GMT+3</option>
+                  <option value="+4"{% if user.gmt == '+4' %} selected{% endif %}>GMT+4</option>
+                  <option value="+5"{% if user.gmt == '+5' %} selected{% endif %}>GMT+5</option>
+                  <option value="+6"{% if user.gmt == '+6' %} selected{% endif %}>GMT+6</option>
+                  <option value="+7"{% if user.gmt == '+7' %} selected{% endif %}>GMT+7</option>
+                  <option value="+8"{% if user.gmt == '+8' %} selected{% endif %}>GMT+8</option>
+                  <option value="+9"{% if user.gmt == '+9' %} selected{% endif %}>GMT+9</option>
+                  <option value="+10"{% if user.gmt == '+10' %} selected{% endif %}>GMT+10</option>
+                  <option value="+11"{% if user.gmt == '+11' %} selected{% endif %}>GMT+11</option>
+                  <option value="+12"{% if user.gmt == '+12' %} selected{% endif %}>GMT+12</option>
+                  <option value="-1"{% if user.gmt == '-1' %} selected{% endif %}>GMT-1</option>
+                  <option value="-2"{% if user.gmt == '-2' %} selected{% endif %}>GMT-2</option>
+                  <option value="-3"{% if user.gmt == '-3' %} selected{% endif %}>GMT-3</option>
+                  <option value="-4"{% if user.gmt == '-4' %} selected{% endif %}>GMT-4</option>
+                  <option value="-5"{% if user.gmt == '-5' %} selected{% endif %}>GMT-5</option>
+                  <option value="-6"{% if user.gmt == '-6' %} selected{% endif %}>GMT-6</option>
+                  <option value="-7"{% if user.gmt == '-7' %} selected{% endif %}>GMT-7</option>
+                  <option value="-8"{% if user.gmt == '-8' %} selected{% endif %}>GMT-8</option>
+                  <option value="-9"{% if user.gmt == '-9' %} selected{% endif %}>GMT-9</option>
+                  <option value="-10"{% if user.gmt == '-10' %} selected{% endif %}>GMT-10</option>
+                  <option value="-11"{% if user.gmt == '-11' %} selected{% endif %}>GMT-11</option>
+                  <option value="-12"{% if user.gmt == '-12' %} selected{% endif %}>GMT-12</option>
+                </select>
+
+{% endmacro %}
+

@@ -1,0 +1,198 @@
+/* site.css: main stylesheet for the site /*
+ 
+/* region: elements */
+html, body {
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    height: 94%;
+}
+/* endregion: elements */
+
+/* region: ids */
+/* layout: contains three blocks: east, central, and west */
+#content {
+    min-height: 100%;
+    height: 100%;
+}
+#layout {
+    position: relative;
+    width: 96%;
+    height: 100%;
+    margin: auto;
+    margin-top: 3px;
+}
+#layout #east, #layout #west {
+    border: 1px solid black;
+    width: 48%;
+    border-radius: 3px;
+    border-collapse: collapse;
+}
+#layout #west {
+    display: none;
+    width: 100%;
+}
+#layout #east {
+    width: 100%;
+}
+/* page: contains all page data: for fadeIn effect */
+#page {
+    position: relative;
+    display: none;
+    overflow: auto;
+    height: 100%;
+}
+/* thesix: table containing six cells for the six themes */
+#thesix {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 99%;
+    height: 99%;
+    margin: auto;
+}
+#thesix .cell {
+    vertical-align: middle;
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 50%;
+}
+/* endregion: ids */
+
+/* region: classes */
+.banner {
+    width: 96%;
+    color: #fff;
+    background-color: #000;
+    border: 1px solid #abf;
+    border-radius: 2px;
+    margin: 0.15em;
+    font-size: 24pt;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.grid {
+    display: table;
+}
+.row {
+    display: table-row;
+}
+.cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+/* endregion: ids */
+
+.asix {
+    width: 100%;
+    height: 100%;
+}
+#one .cell, #two .cell, #three .cell, #four .cell, #five .cell, #six .cell {
+    vertical-align: middle;
+}
+#also {
+    width: 100%;
+    height: 100%;
+}
+#also .cell {
+    border: 1px solid black;
+    vertical-align: top;
+}
+#rbottom {
+    width: 100%;
+    height: 100%;
+}
+#rbottom .cell {
+    width: 50%;
+}
+.grey {
+    /*background-color: #eef;*/
+}
+.number {
+    font-size: 18pt;
+    background-color: white;
+    width: 10% !important;
+    color: #777;
+    text-align: center;
+    font-weight: larger;
+}
+.alarm {
+    font-size: 14pt;
+    background-color: white;
+    font-weight: normal;
+    font-size: normal;
+    cursor: pointer;
+    color: #777;
+}
+.full {
+    width: 100%;
+    height: 100%;
+}
+.noborder {
+    border:none !important;
+}
+.theme {
+    font-size: larger;
+    background-color: #acf;
+    cursor: pointer;
+    color: #777;
+}
+.sindent {
+    margin-left: 4px !important;
+}
+.wltext {
+    color: blue;
+    outline: none;
+    font-size: smaller;
+    cursor: pointer;
+}
+.wtext {
+    color: black;
+    outline: none;
+    font-size: smaller;
+    white-space: pre-wrap;
+}
+.spad {
+    padding-left: 4px;
+}
+.rtitle {
+    font-size: 18pt;
+    margin-top: 6px;
+    margin-left: 6px;
+}
+.rnumber {
+    font-size: 18pt;
+}
+.bwi {
+    margin-top: 10pt;
+    margin-left: 10pt;
+}
+.spacer {
+    line-height: 3px;
+    height: 3px;
+}
+.switch {
+    border: 1px solid black;
+    padding: 1em;
+    background-color: white;
+}
+.selectable-theme {
+    cursor: pointer;
+    margin: 12px;
+}
+.selectable-theme:hover {
+    background-color: #ddd;
+}
+.selectable-number {
+    padding: 0.3em;
+    margin-right: 0.6em;
+    font-size: larger;
+    font-family: serif;
+}
+.selectable-title {
+    margin-left: 1em;
+}
+#adhoc-theme {
+    width: 80%;
+    font-size: large;
+    font-family: sans-serif;
+    color: #ddd;
+}

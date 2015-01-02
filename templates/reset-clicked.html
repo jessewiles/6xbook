@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{# page css #}
+{# ... #}
+{% block page_css %}<link rel="stylesheet" href="/static/css/login.css" type="text/css" />{% endblock %}
+{# content #}
+{# ... #}
+{% block content -%}
+      <div id="auth-wrapper">
+        <div class="row">
+          <div class="cell">
+            <form method="post" action="/reset/{{knock}}">
+              <label for="password">Password</label>
+              <input id="password-input" type="password" name="password" class="text" />
+              <label for="password">Confirm Password</label>
+              <input id="password-input" type="password" name="confirm-password" class="text" />
+              <input type="submit" name="subby" value="Submit" />
+            </form>
+          </div>
+        </div>
+      </div>
+{%- endblock %}

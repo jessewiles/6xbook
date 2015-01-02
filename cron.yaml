@@ -1,0 +1,13 @@
+# 6xbook crontab
+#
+
+cron:
+- description: alarms
+  url: /dorje_chupa/alarm
+  schedule: every 15 minutes synchronized
+
+- description: cook books
+  url: /dorje_chupa/cook
+  schedule: every day 00:00
+  timezone: Pacific/Fiji
+

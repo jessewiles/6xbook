@@ -1,0 +1,50 @@
+#auth-wrapper {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    position: relative;
+    display: table;
+    margin: auto;
+    margin-top: 5%;
+    width: 50%;
+    height: 50%;
+    border: 2px solid #666;
+    border-radius: 2px;
+    background-color: #eee;
+}
+.row {
+    display: table-row;
+}
+.cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+#auth-wrapper .text {
+    width: 90%;
+}
+#auth-wrapper label {
+    display: block;
+    margin-top: 1em;
+    margin-left: 1em;
+}
+#auth-wrapper input {
+    display: block;
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
+#stay-container {
+   margin-left: 1em;
+}
+#stay {
+    display: inline !important;
+}
+#footer {
+    text-align: center;
+}
+#forgot {
+    margin: 2em;
+}
+#forgot a {
+    font-size: small;
+    color: navy;
+}
+

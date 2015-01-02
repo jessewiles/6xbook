@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{# page css #}
+{#          #}
+{% block page_css %}<link rel="stylesheet" href="/static/css/login.css" type="text/css" />{% endblock %}
+{# page js #}
+{#         #}
+{% block page_js -%}
+    <script>
+$(window.document).ready(
+    function() {
+        $('#{% if focusid %}{{focusid}}{% else %}email-input{% endif %}').focus();
+    }
+);
+    </script>
+{%- endblock %}
+{# content #}
+{#         #}
+{% block content -%}
+      <div id="auth-wrapper">
+        <div class="row">
+          <div class="cell">
+            <form method="post" action="/register">
+              <script>document.write('<input type="hidden" name="client-gmt" value="' +Site.gmt+ '" />');</script>
+              <label for="email">Email</label>
+              <input id="email-input" type="text" name="email" class="text" value="{{email}}" />
+              <label for="password">Password</label>
+              <input id="password-input" type="password" name="password" class="text" />
+              <label for="password">Confirm Password</label>
+              <input type="password" name="confirm-password" class="text" />
+              <input type="submit" name="subby" value="Register" />
+            </form>
+          </div>
+        </div>
+      </div>
+{%- endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{# header #}
+{# .....  #}
+{% block header %}
+      <div class="menu-item"><a href="/register">Sign up</a></div>
+{% endblock %}
+{# page css #}
+{# ... #}
+{% block page_css %}<link rel="stylesheet" href="/static/css/login.css" type="text/css" />{% endblock %}
+{# page js #}
+{# ... #}
+{% block page_js -%}
+    <script>
+$(window.document).ready(
+    function() {
+        $('#{% if focusid %}{{focusid}}{% else %}email-input{% endif %}').focus();
+    }
+);
+    </script>
+{%- endblock %}
+{# content #}
+{# ... #}
+{% block content -%}
+      <div id="auth-wrapper">
+        <div class="row">
+          <div class="cell">
+            <form method="post" action="/login">
+              <input type="hidden" name="continue" value="{{continue}}" />
+              <label for="email">Email</label>
+              <input id="email-input" type="text" name="email" value="{{email}}" class="text" />
+              <label for="password">Password</label>
+              <input id="password-input" type="password" name="password" class="text" />
+              <div id="stay-container">
+                  <input id="stay" type="checkbox" name="stay"{{stay}}/>
+                  <span class="stay">Keep me logged in</span>
+              </div>
+              <input type="submit" name="subby" value="Login" />
+            </form>
+            <div id="forgot"><a href="/reset">Forgot password?</a></div>
+          </div>
+        </div>
+      </div>
+{%- endblock %}

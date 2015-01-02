@@ -1,0 +1,63 @@
+application: 6xbook
+version: 15
+runtime: python27
+api_version: 1
+threadsafe: true
+
+default_expiration: "5s"
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: /settings.*
+  script: settings.app
+
+- url: /logout
+  script: logout.app
+
+- url: /login
+  script: login.app
+
+- url: /register
+  script: register.app
+
+- url: /reset.*
+  script: reset.app
+
+- url: /verify/(.*)
+  script: verify.app
+
+- url: /dorje_chupa/alarm
+  script: alarm.app
+  login: admin
+
+- url: /dorje_chupa/cook
+  script: cook.app
+
+- url: /book/.*
+  script: book.app
+
+- url: /tbook/.*
+  script: tbook.app
+
+- url: /today
+  script: today.app
+
+- url: /day/.*
+  script: day.app
+
+- url: /home
+  script: home.app
+
+- url: .*
+  script: main.app
+
+libraries:
+- name: webapp2
+  version: latest
+
+- name: jinja2
+  version: latest
+
+

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block header %}
+  {% if user == None %}
+      <div class="menu-item"><a href="/register">Sign up</a></div>
+      <div class="menu-item"><a href="/login">Login</a></div>
+  {% else %}
+      <div class="menu-item"><a href="/logout">Logout</a></div>
+      <div class="menu-item"><a href="/settings">{{user.email}}</a></div>
+  {% endif %}
+{% endblock %}
+{% block page_js -%}
+    <script src="/static/js/model.js"></script>
+    <script>
+$(document).ready(
+    function() {
+        var zpad = function(num) {
+            var result = num.toString();
+            if (result.length == 1)
+                result = '0' + result;
+            return result;
+        };
+        var localeDate = new Date(Date.now());
+        var todayId = zpad(localeDate.getMonth() + 1) +'.'+ zpad(localeDate.getDate()) +'.'+ localeDate.getFullYear().toString();
+    }
+)
+var GetStarted = function() {
+    document.location = '/today';
+};
+    </script>
+{%- endblock %}
+{% block content -%}
+    <table id="splash">
+      <tr>
+        <td colspan="2">
+          <div class="title large"> <img src="/static/img/splash.png" class="graphic" /> </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">
+          <input type="button" class="doitnow" value="Sign Up" onclick="window.document.location = '/register';" />
+        </td>
+        <td style="text-align: left;">
+          <input type="button" class="doitnow" value="Login" onclick="window.document.location = '/login';" />
+        </td>
+      </tr>
+    </table>
+{%- endblock %}
+
+{% block footer %}  {% endblock %}

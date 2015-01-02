@@ -1,0 +1,22 @@
+# When an hour changes, we've already confident that it's sandboxed
+# within it's 12 part range.  It's true that if the change changes the
+# Alarm hour (the GMT hour) from pm to am or vice versa, the effect
+# does not change the displayed value, since by virtue of the sandbox,
+# the resolved time will remain within the 12 part range.
+
+# we have a gmt value of -5
+# what's showing in the ui is 4(pm)
+# what's in the database then is 21 ((gmt time + offset) gets us to 16, 
+# which resolves to 4pm)
+# in the ui, we change the value to 7(pm)
+# the function must calculate the offset between old_displayed and
+# new_displayed, then apply that offset to the gmt database time.
+# In this case the new database time is 0(gmt)
+#
+# Conclusion: ampm field is useless in Alarm database.
+#   Its only value is in calculating the 24 hour time of the hour
+#   which is displayed at run-time.  If the hour is changed in the UI, 
+#   then the result is concerned with flipping the 24 hour time of the
+#   database only.
+#
+

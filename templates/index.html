@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% macro dayid(param_dayid) -%}
+{{'{0}.{1}.{2}'.format(param_dayid[4:6], param_dayid[6:], param_dayid[0:4])}}
+{%- endmacro %}
+{% block header %}
+  {% if user == 'None' %}
+      <div class="menu-item"><a href="/register">Sign up</a></div>
+      <div class="menu-item"><a href="/login">Login</a></div>
+  {% else %}
+      <div class="menu-item"><a href="/logout">Logout</a></div>
+      <div class="menu-item"><a href="/settings">{{user.email}}</a></div>
+  {% endif %}
+{% endblock %}
+{% block page_js -%}
+    <script src="/static/js/model.js"></script>
+    <script>
+var GetToday = function() {
+    var zpad = function(num) {
+        var result = num.toString();
+        if (result.length == 1)
+            result = '0' + result;
+        return result;
+    };
+    var localeDate = new Date(Date.now());
+    var todayId = zpad(localeDate.getMonth() + 1) +'.'+ zpad(localeDate.getDate()) +'.'+ localeDate.getFullYear().toString();
+
+    // Redirect to the day
+    //
+    document.location = '/day/' +todayId;
+};
+    </script>
+{%- endblock %}
+{% block content -%}
+  <div id="days">
+    <div id="{{today}}" class="aday today {{months[today[0:2]]}}"><a href="/day/{{today}}">{{ today }}</a></div>
+    {% for _book in books -%}
+    <div id="{{dayid(_book)}}" class="aday {{months[_book[4:6]]}}"><a href="/day/{{dayid(_book)}}">{{ dayid(_book) }}</a></div>
+    {%- endfor %}
+  </div>
+{%- endblock %}
+
+{% block footer %}{% endblock %}
+

@@ -1,0 +1,518 @@
+{% extends "base.html" %}
+{% block page_css %}
+<link rel="stylesheet" href="/static/css/day.css" type="text/css" />
+<link rel="stylesheet" href="/static/css/glass.css" type="text/css" />
+{% endblock %}
+{% block page_js -%}
+    <script src="/static/js/glass.js"></script>
+    <script src="/static/js/templating.js"></script>
+    <script src="/static/js/model.js"></script>
+    <script src="/static/js/view.js"></script>
+    <script src="/static/js/day.js"></script>
+    <script>
+$(document).ready(
+    function() {
+        var zpad = function(num) {
+            var result = num.toString();
+            if (result.length == 1)
+                result = '0' + result;
+            return result;
+        };
+        var localeDate = new Date(Date.now());
+        //window.TodayId = zpad(localeDate.getMonth() + 1) +'.'+ zpad(localeDate.getDate()) +'.'+ localeDate.getFullYear().toString();
+    }
+);
+
+window.bookdata = '{{bookdata}}';
+    </script>
+
+{% endblock %}
+{% block header %}
+  {% if user.email != 'anonymous' %}
+      <div class="menu-item"><a href="/logout">Logout</a></div>
+      <div class="menu-item"><a href="/settings">{{user.email}}</a></div>
+  {% else %}
+      <div class="menu-item"><a href="/register">Sign up</a></div>
+      <div class="menu-item"><a href="/login">Login</a></div>
+  {% endif %}
+{% endblock %}
+{% block content -%}
+    <!-- region: page -->
+    <div id="page">
+
+      <div class="toggles">
+        <input type="button" class="switch" value="Flip" />
+      </div>
+
+      <!-- region: #day -->
+      <div id="day" class="banner">
+      {{day}}  
+      </div>
+      <!-- endregion: #day -->
+      
+      <!-- region: #layout -->
+      <div id="layout" class="grid">
+        <div class="row">
+
+          <!-- region: #east -->
+          <div id="east" class="cell">
+            
+            <!-- region: #thesix -->
+            <div id="thesix" class="grid">
+
+              <!-- region: thesix-row-1 -->
+              <div class="row">
+
+                <!-- region: thesix-row-1-cell-1 -->
+                <div class="cell">
+
+                  <!-- region: #thesix-1 -->
+                  <div id="thesix-1" class="grid asix">
+
+                    <!--
+                    <div class="row">
+                      <div class="cell">
+                        <div class="grid full">
+                          <div class="row">
+                            <div id="number1" class="cell number noborder pagedata"> 1 </div>
+                            <div id="alarm1" class="cell alarm noborder spad pagedata"> Alarm: {{ alarm1_time }} </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    -->
+
+                    <div class="row">
+                      <div class="cell theme">
+                        <div id="theme1" class="sindent pagedata"> {{ theme1_title }}></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell spacer">
+                        <!-- spacer -->
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>+</b>  <span id="plus1" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>-</b>  <span id="minus1" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>To do</b>  <span id="todo1" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell spacer">
+                        <!-- spacer -->
+                      </div>
+                    </div>
+
+                  </div>
+                  <!-- endregion: #thesix-1 -->
+
+                </div>
+                <!-- endregion: thesix-row-1-cell-1 -->
+
+                <!-- region: thesix-row-1-cell-2 -->
+                <div class="cell">
+
+                  <!-- region: #thesix-2 -->
+                  <div id="thesix-2" class="grid asix">
+
+                    <!--
+                    <div class="row">
+                      <div class="cell">
+                        <div class="grid full">
+                          <div class="row">
+                            <div id="number2" class="cell number noborder pagedata"> 2 </div>
+                            <div id="alarm2" class="cell alarm noborder spad pagedata"> Alarm: {{ alarm2_time }}  </div>
+                          </div>
+                        </div>                        
+                      </div>
+                    </div>
+                    -->
+
+                    <div class="row">
+                      <div class="cell theme">
+                        <div id="theme2" class="sindent pagedata">{{ theme2_title }}</div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell spacer">
+                        <!-- spacer -->
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>+</b>  <span id="plus2" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>-</b>  <span id="minus2" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>To do</b>  <span id="todo2" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell spacer">
+                        <!-- spacer -->
+                      </div>
+                    </div>
+                  </div>                    
+                  <!-- endregion: #thesix-2 -->
+
+                </div>
+                <!-- endregion: thesix-row-1-cell-2 -->
+              </div>
+              <!-- endregion: thesix-row-1 -->
+
+              <!-- region: thesix-row-2 -->
+              <div class="row">
+
+                <!-- region: thesix-row-2-cell-1-->
+                <div class="cell">
+                  <div id="three" class="grid asix">
+                    <!--
+                    <div class="row">
+                      <div class="cell">
+
+                        <div class="grid full">
+                          <div class="row">
+                            <div id="number3" class="cell number noborder pagedata"> 3 </div>
+                            <div id="alarm3" class="cell alarm noborder spad pagedata"> Alarm: {{ alarm3_time }} </div>
+                          </div>
+                        </div>                        
+                      </div>
+                    </div>
+                    -->
+
+                    <div class="row">
+                      <div class="cell theme">
+                        <div id="theme3" class="sindent pagedata">{{ theme3_title }}</div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell spacer">
+                        <!-- spacer -->
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>+</b>  <span id="plus3" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>-</b>  <span id="minus3" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>To do</b>  <span id="todo3" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell spacer">
+                        <!-- spacer -->
+                      </div>
+                    </div>
+                  </div>
+                  <!-- endregion: #thesix-3 -->
+
+                </div>
+                <!-- endregion: thesix-row-2-cell-1-->
+
+                <!-- region: thesix-row-2-cell-2-->
+                <div class="cell">
+
+                  <!-- region: #thesix-4 -->
+                  <div id="four" class="grid asix">
+                    <!--
+                    <div class="row">
+                      <div class="cell">
+                        <div class="grid full">
+                          <div class="row">
+                            <div id="number4" class="cell number noborder pagedata"> 4 </div>
+                            <div id="alarm4" class="cell alarm noborder spad pagedata"> Alarm: {{ alarm4_time }} </div>
+                          </div>
+                        </div>                       
+                      </div>
+                    </div>
+                    -->
+
+                    <div class="row">
+                      <div class="cell theme">
+                        <div id="theme4" class="sindent pagedata">{{ theme4_title }}</div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell spacer">
+                        <!-- spacer -->
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>+</b>  <span id="plus4" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>-</b>  <span id="minus4" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>To do</b>  <span id="todo4" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell spacer">
+                        <!-- spacer -->
+                      </div>
+                    </div>
+                  </div>
+                  <!-- endregion: #thesix-4 -->
+
+                </div>
+                <!-- endregion: thesix-row-2-cell-2-->
+
+              </div>
+              <!-- endregion: thesix-row-2 -->
+
+              <!-- region: thesix-row-3 -->
+              <div class="row">
+
+                <!-- region: thesix-row-3-cell-1-->
+                <div class="cell">
+
+                  <!-- region: #thesix-5 -->
+                  <div id="thesix-5" class="grid asix">
+                    <!--
+                    <div class="row">
+                      <div class="cell">
+                        <div class="grid full">
+                          <div class="row">
+                            <div id="number5" class="cell number noborder pagedata"> 5 </div>
+                            <div id="alarm5" class="cell alarm noborder spad pagedata"> Alarm: {{ alarm5_time }} </div>
+                          </div>
+                        </div>                        
+                      </div>
+                    </div>
+                    -->
+
+                    <div class="row">
+                      <div class="cell theme">
+                        <div id="theme5" class="sindent pagedata">{{ theme5_title }}</div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell spacer">
+                        <!-- spacer -->
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>+</b>  <span id="plus5" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>-</b>  <span id="minus5" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>To do</b>  <span id="todo5" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell spacer">
+                        <!-- spacer -->
+                      </div>
+                    </div>
+                  </div>
+                  <!-- endregion: #thesix-5 -->
+                  
+                </div>
+                <!-- endregion: thesix-row-3-cell-1-->
+
+                <!-- region: thesix-row-3-cell-2-->
+                <div class="cell">
+                
+                  <!-- region: #thesix-6 -->
+                  <div id="six" class="grid asix">
+
+                    <!--
+                    <div class="row">
+                      <div class="cell">
+                        <div class="grid full">
+                          <div class="row">
+                            <div id="number6" class="cell number noborder pagedata"> 6 </div>
+                            <div id="alarm6" class="cell alarm noborder spad pagedata"> Alarm: {{ alarm6_time }} </div>
+                          </div>
+                        </div>                        
+                      </div>
+                    </div>
+                    -->
+
+                    <div class="row">
+                      <div class="cell theme">
+                        <div id="theme6" class="sindent pagedata">{{ theme6_title }}</div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell spacer">
+                        <!-- spacer -->
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>+</b>  <span id="plus6" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>-</b>  <span id="minus6" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell grey">
+                        <div class="sindent"><b>To do</b>  <span id="todo6" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="cell spacer">
+                        <!-- spacer -->
+                      </div>
+                    </div>
+
+                  </div>
+                  <!-- endregion: #thesix-6 -->
+
+                </div>
+                <!-- endregion: thesix-row-3-cell-2-->
+
+              </div>
+              <!-- endregion: thesix-row-3 -->
+
+            </div>
+            <!-- endregion: #thesix -->
+
+          </div>
+          <!-- endregion: #east -->
+          
+          <!-- region: #central -->
+          <div id="central">
+            <!-- open -->
+          </div>
+          <!-- endregion: #central -->
+          
+          <!-- region: #west-->
+          <div id="west" class="cell">
+
+            <!-- region: #also -->
+            <div id="also" class="grid">
+              <div class="row">
+                <div class="cell">
+                  <div class="rtitle"> MEDITATION </div>
+                  <div class="bwi">  <span id="meditation" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="cell">
+                  <div class="rtitle"> YOGA </div>
+                  <div class="bwi">  <span id="yoga" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="cell">
+                  <div class="rtitle"> DEDICATION </div>
+                  <div class="bwi">  <span id="dedication" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="cell">
+                  <div id="rbottom" class="grid">
+                    <div class="row">
+                      <div class="cell">
+                        <div class="rtitle"> BEST </div>
+                        <div class="bwi"><span class="rnumber">1</span>  <span id="best1" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                        <div class="bwi"><span class="rnumber">2</span>  <span id="best2" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                        <div class="bwi"><span class="rnumber">3</span>  <span id="best3" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+
+                      <div class="cell">
+                        <div class="rtitle"> WORST </div>
+                        <div class="bwi"><span class="rnumber">1</span>  <span id="worst1" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                        <div class="bwi"><span class="rnumber">2</span>  <span id="worst2" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                        <div class="bwi"><span class="rnumber">3</span>  <span id="worst3" class="wltext pagedata" contenteditable="true">Click to enter text</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>            
+            <!-- endregion: #also -->
+
+          </div>
+          <!-- endregion: #west-->
+
+        </div>
+      </div>
+      <!-- endregion: #layout -->
+
+    </div>
+    <!-- endregion: #page -->
+{%- endblock %}
+{% block templates -%}
+    <script id="select-theme" type="6xbook/x-template">
+      <div class="padder">
+        <div class="title"> Select Theme </div>
+${themes}
+      </div>
+    </script>
+{%- endblock %}
+
