@@ -32,7 +32,14 @@ var GetToday = function() {
 {%- endblock %}
 {% block content -%}
   <div id="days">
+    {% if len(books) > 0 -%}
+      {% if today != dayid(books[0]) -%}
     <div id="{{today}}" class="aday today {{months[today[0:2]]}}"><a href="/day/{{today}}">{{ today }}</a></div>
+      {%- endif %}
+    {% else -%}
+    <div id="{{today}}" class="aday today {{months[today[0:2]]}}"><a href="/day/{{today}}">{{ today }}</a></div>
+    {%- endif %}
+
     {% for _book in books -%}
     <div id="{{dayid(_book)}}" class="aday {{months[_book[4:6]]}}"><a href="/day/{{dayid(_book)}}">{{ dayid(_book) }}</a></div>
     {%- endfor %}

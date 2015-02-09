@@ -114,5 +114,12 @@ $(window.document).ready(
                 window.Templating.render('#select-theme', { themes: _html.join('\n') })
             ); 
         });
+
+        $('span[data-prev]').on('click', function(e) {
+            document.location = '/day/'+ $(this).attr('data-prev');
+        });
+        $('span[data-next]').on('click', function(e) {
+            document.location = '/day/'+ $(this).attr('data-next');
+        });
     }
 );

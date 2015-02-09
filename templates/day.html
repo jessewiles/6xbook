@@ -19,7 +19,6 @@ $(document).ready(
             return result;
         };
         var localeDate = new Date(Date.now());
-        //window.TodayId = zpad(localeDate.getMonth() + 1) +'.'+ zpad(localeDate.getDate()) +'.'+ localeDate.getFullYear().toString();
     }
 );
 
@@ -46,7 +45,13 @@ window.bookdata = '{{bookdata}}';
 
       <!-- region: #day -->
       <div id="day" class="banner">
+        {% if prev -%}
+        <span class="left navigate" data-prev="{{prev}}"> &larr;</span>
+        {%- endif %}
       {{day}}  
+        {% if next -%}
+        <span class="right navigate" data-next="{{next}}"> &rarr;</span>
+        {%- endif %}
       </div>
       <!-- endregion: #day -->
       
@@ -84,7 +89,7 @@ window.bookdata = '{{bookdata}}';
 
                     <div class="row">
                       <div class="cell theme">
-                        <div id="theme1" class="sindent pagedata"> {{ theme1_title }}></div>
+                        <div id="theme1" class="sindent pagedata"> {{ theme1_title }} </div>
                       </div>
                     </div>
 

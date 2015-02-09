@@ -96,7 +96,7 @@ $(window.document).ready(
             window.BookPage.load(json);
         }
         else {
-            if (window.bookdata !== null && window.bookdata !== undefined) {
+            if (window.bookdata !== '' && window.bookdata !== undefined) {
                 try {
                     var json = JSON.parse(window.bookdata);
                     window.BookPage.load(json);

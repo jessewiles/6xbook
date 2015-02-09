@@ -36,20 +36,21 @@ class HomeHandler(webapp2.RequestHandler):
             if len(_books) > 0 and _books[0] == utils.get_user_day(_user, param_sort_key=True):
                 _books = _books[1:]
 
+            for _book in _books:
+                logging.info(_book)
             self.response.out.write(
-                template.render(
-                    {
-                        'user': _user,
-                        'title': 'Daily Six Times Book',
-                        'today': _today,
-                        'months': {
-                            '01': 'january', '02': 'february', '03': 'march', '04': 'april',
-                            '05': 'may', '06': 'june', '07': 'july', '08': 'august',
-                            '09': 'september', '10': 'october', '11': 'november', '12': 'december'
-                        },
-                        'books': _books
-                    }
-                )
+                template.render({
+                    'user': _user,
+                    'title': 'Daily Six Times Book',
+                    'today': _today,
+                    'months': {
+                        '01': 'january', '02': 'february', '03': 'march', '04': 'april',
+                        '05': 'may', '06': 'june', '07': 'july', '08': 'august',
+                        '09': 'september', '10': 'october', '11': 'november', '12': 'december'
+                    },
+                    'books': _books,
+                    'len': len
+                })
             )
 
         else:

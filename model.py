@@ -37,6 +37,7 @@ class Alarm(db.Model):
 class Book(db.Model):
     userId = db.ReferenceProperty(User)
     dayId = db.StringProperty()
+    sortkey = db.StringProperty()
     data = db.TextProperty()
 
 class Cook(db.Model):

@@ -19,6 +19,18 @@ class DbAdminHandler(webapp2.RequestHandler):
                     _theme.put()
         self.response.write('yep')
                 
+class DaySortFieldHandler(webapp2.RequestHandler):
+    def get(self):
+        _books = model.Book.all()
+        _count = 0
 
-app = webapp2.WSGIApplication([('/_db/theme_limit', DbAdminHandler)], debug=True)
+        for _book in _books:
+            _count = _count + 1
+            _parts = _book.dayId.split('.')
+            _book.sortkey = '{0}{1}{2}'.format(_parts[2], _parts[0], _parts[1])
+            _book.put()
+
+        self.response.write('Processed %d books.' % (_count))
+
+app = webapp2.WSGIApplication([('/_db/theme_limit', DbAdminHandler), ('/_db/book_sortkey', DaySortFieldHandler)], debug=True)
 

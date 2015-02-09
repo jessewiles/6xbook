@@ -29,10 +29,15 @@ class BookHandler(webapp2.RequestHandler):
 
         else:
             _book = model.Book.gql('where userId = :1 and dayId = :2', _user, book_id).get()
+
             if _book is None:
+                _sort_parts = book_id.split('.')
+                _sortkey = '{0}{1}{2}'.format(_sort_parts[2], _sort_parts[0], _sort_parts[1])
+
                 _book = model.Book(
                     userId = _user,
-                    dayId = book_id
+                    dayId = book_id,
+                    sortkey = _sortkey
                 )
             _data = self.request.get('book')
             _encdata = _data.encode('utf-8')

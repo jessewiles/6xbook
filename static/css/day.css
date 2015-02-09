@@ -196,3 +196,14 @@ html, body {
     font-family: sans-serif;
     color: #ddd;
 }
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.navigate {
+    cursor: pointer;
+    margin-left: 1em;
+    margin-right: 1em;
+}

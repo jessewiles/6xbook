@@ -50,6 +50,9 @@ handlers:
 - url: /home
   script: home.app
 
+- url: /_db/.*
+  script: dbadmin.app
+
 - url: .*
   script: main.app
 
