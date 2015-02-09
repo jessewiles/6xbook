@@ -74,7 +74,7 @@ class DayHandler(webapp2.RequestHandler):
                         )
 
                     else:
-                        _previous_book = model.Book.gql('where sortkey > :1 order by sortkey desc', _book.sortkey).get()
+                        _previous_book = model.Book.gql('where sortkey > :1', _book.sortkey).get()
                         _next_book = model.Book.gql('where sortkey < :1 order by sortkey desc', _book.sortkey).get()
 
                         _parts = {}
@@ -101,7 +101,7 @@ class DayHandler(webapp2.RequestHandler):
 
                     _all_books = model.Book.all()
                     logging.info(str(help(_all_books.filter)))
-                    _previous_book = model.Book.gql('where sortkey > :1 order by sortkey desc',  _book.sortkey).get()
+                    _previous_book = model.Book.gql('where sortkey > :1',  _book.sortkey).get()
                     _next_book = model.Book.gql('where sortkey < :1 order by sortkey desc', _book.sortkey).get()
                     logging.info(_book.sortkey)
                     logging.info(_previous_book)
