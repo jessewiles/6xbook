@@ -12,9 +12,6 @@ You have set up an alarm to keep your daily book.  Please navigate to the link
 below to make an entry.
 
 http://6xbook.appspot.com/
-
-You have received this email because you signed up for an account at 6xbook.appspot.com.
-<a href="/stop-notifications">Stop notifications</a>.
 '''
 
 
