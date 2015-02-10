@@ -48,6 +48,7 @@ class DayHandler(webapp2.RequestHandler):
             if _user is not None:
                 if _is_today:
                     _book = model.Book.gql('where userId = :1 and dayId = :2', _user, day).get()
+                    _next_book = model.Book.gql('where sortkey < :1 order by sortkey desc', _sortkey).get()
 
                     if _book is None:
                         _template = TEMPLATES.get_template('day.html')
@@ -57,7 +58,8 @@ class DayHandler(webapp2.RequestHandler):
                                'title': 'Daily Six Times Book',
                                'day': day,
                                'sortkey': _sortkey,
-                               'bookdata': DEFAULT_DAY
+                               'bookdata': DEFAULT_DAY,
+                               'next': '' if _next_book is None else _next_book.dayId
                            })
                         )
 
@@ -69,14 +71,12 @@ class DayHandler(webapp2.RequestHandler):
                                'title': 'Daily Six Times Book',
                                'day': day,
                                'sortkey': _sortkey,
-                               'bookdata': DEFAULT_DAY
+                               'bookdata': DEFAULT_DAY,
+                               'next': '' if _next_book is None else _next_book.dayId
                            })
                         )
 
                     else:
-                        _previous_book = model.Book.gql('where sortkey > :1', _book.sortkey).get()
-                        _next_book = model.Book.gql('where sortkey < :1 order by sortkey desc', _book.sortkey).get()
-
                         _parts = {}
                         _template = TEMPLATES.get_template('day.html')
                         _data = json.loads(base64.decodestring(_book.data))
@@ -84,9 +84,8 @@ class DayHandler(webapp2.RequestHandler):
                         _data['title'] = 'Daily Six Times Book: %s' % day
                         _data['day'] = day
                         _data['bookdata'] = base64.decodestring(_book.data).decode('utf-8').replace("'", '&apos;')
-                        _data['prev'] = '' if _previous_book is None else _previous_book.dayId
                         _data['next'] = '' if _next_book is None else _next_book.dayId
-                        
+
                         self.response.write( _template.render( _data ))
 
                 else:
@@ -96,7 +95,7 @@ class DayHandler(webapp2.RequestHandler):
                             userId = _user,
                             dayId = day,
                             sortkey = _sortkey,
-                            data = base64.encodestring(DEFAULT_DAY)
+                           data = base64.encodestring(DEFAULT_DAY)
                         )
 
                     _all_books = model.Book.all()

@@ -73,7 +73,8 @@ class VerifyHandler(webapp2.RequestHandler):
                             '05': 'may', '06': 'june', '07': 'july', '08': 'august',
                             '09': 'september', '10': 'october', '11': 'november', '12': 'december'
                         },
-                        'message': 'Verified this email.  Please enjoy!'
+                        'message': 'Verified this email.  Please enjoy!',
+                        'len': len
                     })
                 )
 

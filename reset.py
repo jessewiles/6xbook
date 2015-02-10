@@ -69,7 +69,8 @@ class ResetHandler(webapp2.RequestHandler):
                     {
                         'user': _user,
                         'title': 'Daily Six Times Book',
-                        'message': 'We sent a link to %s.  Please click the link to reset your password.' % (_email)
+                        'message': 'We sent a link to %s.  Please click the link to reset your password.' % (_email),
+                        'len': len
                     }
                 )
             )
