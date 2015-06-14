@@ -43,5 +43,14 @@ class AlarmHandler(webapp2.RequestHandler):
                         mail.send_mail(_sender_address, _user.email, _subject, _body)
 
 
-app = webapp2.WSGIApplication([('/dorje_chupa/alarm', AlarmHandler)], debug=True)
+class StopNotificationHandler(webapp2.RequestHandler):
+    def get(self, param_user_id):
+
+
+app = webapp2.WSGIApplication([
+        ('/dorje_chupa/alarm', AlarmHandler),
+        ('/stop-notification/(.*)', StopNotificationHandler)
+    ],
+    debug=True
+)
 

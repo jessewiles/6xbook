@@ -53,6 +53,9 @@ handlers:
 - url: /_db/.*
   script: dbadmin.app
 
+- url: /stop-notification/.*
+  script: alarm.app
+
 - url: .*
   script: main.app
 
