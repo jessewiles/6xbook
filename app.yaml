@@ -1,5 +1,5 @@
 application: 6xbook
-version: 16
+version: 17
 runtime: python27
 api_version: 1
 threadsafe: true
@@ -12,49 +12,62 @@ handlers:
 
 - url: /settings.*
   script: settings.app
+  secure: always
 
 - url: /logout
   script: logout.app
+  secure: always
 
 - url: /login
   script: login.app
+  secure: always
 
 - url: /register
   script: register.app
+  secure: always
 
 - url: /reset.*
   script: reset.app
+  secure: always
 
 - url: /verify/(.*)
   script: verify.app
+  secure: always
 
 - url: /dorje_chupa/alarm
   script: alarm.app
   login: admin
+  secure: always
 
 - url: /dorje_chupa/cook
   script: cook.app
+  secure: always
 
 - url: /book/.*
   script: book.app
+  secure: always
 
 - url: /tbook/.*
   script: tbook.app
+  secure: always
 
 - url: /today
   script: today.app
 
 - url: /day/.*
   script: day.app
+  secure: always
 
 - url: /home
   script: home.app
-
-- url: /_db/.*
-  script: dbadmin.app
+  secure: always
 
 - url: /stop-notification/.*
   script: alarm.app
+  secure: always
+
+- url: /_db/.*
+  script: dbadmin.app
 
 - url: .*
   script: main.app

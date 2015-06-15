@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{# page css #}
+{#          #}
+{% block page_css %}<link rel="stylesheet" href="/static/css/login.css" type="text/css" />{% endblock %}
+
+{# page js #}
+{#         #}
+
+{# header #}
+{#        #}
+{% block header %}
+  {% if user == 'None' %}
+      <div class="menu-item"><a href="/register">Sign up</a></div>
+      <div class="menu-item"><a href="/login">Login</a></div>
+  {% else %}
+      <div class="menu-item"><a href="/logout">Logout</a></div>
+      <div class="menu-item"><a href="/settings">{{user.email}}</a></div>
+  {% endif %}
+{% endblock %}
+
+{# content #}
+{#         #}
+{% block content -%}
+      <div id="auth-wrapper">
+        <div class="row">
+          <div class="cell">
+            <blockquote>
+              <div>You have been unsubscribed from email updates.  To re-subscribe:</div>
+              <ol>
+                <li> Login and visit the settings page by clicking the email address in the top right of the window.</li>
+                <li> Click the <strong>Notify</strong> setting in the <strong>My Info</strong> section of the page.</li>
+              </ol>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+{%- endblock %}
+

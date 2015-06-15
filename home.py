@@ -36,8 +36,6 @@ class HomeHandler(webapp2.RequestHandler):
             if len(_books) > 0 and _books[0] == utils.get_user_day(_user, param_sort_key=True):
                 _books = _books[1:]
 
-            for _book in _books:
-                logging.info(_book)
             self.response.out.write(
                 template.render({
                     'user': _user,

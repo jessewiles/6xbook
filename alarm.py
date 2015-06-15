@@ -1,17 +1,50 @@
 #!/usr/bin/env python
 
+import jinja2
 import logging
 import model
+import os
 import time
+import user
+import utils
 import webapp2
 
 from google.appengine.api import mail
 
-NOTIFY_EMAIL_MESSAGE = '''\
+TEMPLATES = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(
+        os.path.join(os.path.dirname(__file__), 'templates')
+    )
+)
+
+NOTIFY_EMAIL_MESSAGE = u'''\
 You have set up an alarm to keep your daily book.  Please navigate to the link
 below to make an entry.
 
-http://6xbook.appspot.com/
+{0}
+
+To unsubscribe from these updates, please visit the following link:
+
+    {1}
+'''
+
+NOTIFY_EMAIL_MESSAGE_HTML = u'''\
+<div>
+    <h4> Daily Six Times Book </h4>
+
+    <p> You have set up an alarm to keep your daily book.  Please navigate to the link
+        below to make an entry. </p>
+
+    <dl>
+        <dt><a href="{0}" target="_blank">{0}</a></dt>
+    </dl>
+
+    <p> To unsubscribe from these updates, please visit the following link: </p>
+
+    <dl>
+        <dt><a href="{1}" target="_blank">Unsubscribe</a></dt>
+    </dl>
+</div>
 '''
 
 
@@ -38,13 +71,29 @@ class AlarmHandler(webapp2.RequestHandler):
                     if _user is not None and _user.notify:
                         _sender_address = "Six Times Book <helper@6xbook.appspotmail.com>"
                         _subject = "[6xbook] Book alarm %d" % _alarm.orderId
-                        _body = NOTIFY_EMAIL_MESSAGE
+                        _book_link = u'https://6xbook.appspot.com/day/{0}#{1}'.format(utils.get_user_day(_user), _alarm.orderId)
+                        _unsubscribe_link = u'https://6xbook.appspot.com/stop-notification/{0}'.format(_user.key())
+                        _body = NOTIFY_EMAIL_MESSAGE.format(_book_link, _unsubscribe_link)
+                        _html = NOTIFY_EMAIL_MESSAGE_HTML.format(_book_link, _unsubscribe_link)
                         #logging.info('HACK JESSE: sending to: %s' % (_user.email))
-                        mail.send_mail(_sender_address, _user.email, _subject, _body)
+                        #logging.info('HACK JESSE: {}'.format(_body))
+                        mail.send_mail(_sender_address, _user.email, _subject, _body, html=_html)
 
 
 class StopNotificationHandler(webapp2.RequestHandler):
     def get(self, param_user_id):
+        _user = user.get_user(self.request)
+        if type(_user) is model.User:
+            try:
+                _user.notify = False
+                _user.put()
+
+                _template = TEMPLATES.get_template('verify-stop-email.html')
+                self.response.write(_template.render({'user': _user}))
+            except Exception as e:
+                self.error(500)
+        else:
+            self.redirect('/login?continue=/stop-notification/{}'.format(param_user_id))
 
 
 app = webapp2.WSGIApplication([

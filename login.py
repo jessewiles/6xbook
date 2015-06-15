@@ -28,7 +28,7 @@ class LoginHandler(webapp2.RequestHandler):
         )
 
     def post(self):
-        cont = self.request.get('continue')
+        _cont = self.request.get('continue')
         email = self.request.get('email')
         password = self.request.get('password')
         _stay = self.request.get('stay')
@@ -50,21 +50,21 @@ class LoginHandler(webapp2.RequestHandler):
 
                 else:
                     self.response.set_cookie('sid', sid)
-                cont = self.request.get('continue')
-                if cont:
-                    self.redirect('/home')
+
+                if _cont:
+                    self.redirect(_cont)
                 else:
                     self.redirect('/home')
 
             else:
                 message = 'Invalid password.  Please try again.'
                 template = main.TEMPLATES.get_template('login.html')
-                self.response.out.write(template.render({'continue': cont, 'message': message, 'email': email, 'focusid': 'password-input'}))
+                self.response.out.write(template.render({'continue': _cont, 'message': message, 'email': email, 'focusid': 'password-input'}))
 
         else:
             message = 'Unknown email: %s.  Please try again.' % (email)
             template = main.TEMPLATES.get_template('login.html')
-            self.response.out.write(template.render({'continue': cont, 'message': message}))
+            self.response.out.write(template.render({'continue': _cont, 'message': message}))
 
 
     def put(self):
