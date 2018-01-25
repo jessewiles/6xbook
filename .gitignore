@@ -1,5 +1,7 @@
 *.working
 *.pyc
 Thumbs.db
+package-lock.json
+src/client/public/bundle.js
 
 node_modules
