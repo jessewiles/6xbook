@@ -1,11 +1,13 @@
-const macko = (state = {}, action) => {
+import { ALPHA, BETA, DELTA } from '../actions'
+
+const macko = (state = {avar: "tulip"}, action) => {
     switch(action.type) {
-        case 'ALPHA':
-            return {name: 'Superman'}
-        case 'BETA':
-            return {name: 'Batman'}
-        case 'DELTA':
-            return {name: 'Wonder Woman'}
+        case ALPHA:
+            return {avar: 'Superman'}
+        case BETA:
+            return {avar: 'Batman'}
+        case DELTA:
+            return {avar: 'Wonder Woman'}
         default:
             return state
     }
@@ -13,4 +15,3 @@ const macko = (state = {}, action) => {
 }
 
 export default macko
-

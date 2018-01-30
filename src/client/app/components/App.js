@@ -3,7 +3,7 @@ import Day from './Day'
 
 const App = ({ match: { params } }) => {
   return (
-    <Day filter={params.filter || 'ALPHA'} />
+    <Day filter={params.filter || 'ALPHA'} avar="ALPHA" />
   )
 }
 
