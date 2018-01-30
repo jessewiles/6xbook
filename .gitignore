@@ -3,5 +3,6 @@
 Thumbs.db
 package-lock.json
 src/client/public/bundle.js
+src/npm-debug.log
 
 node_modules
