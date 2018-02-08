@@ -7,7 +7,7 @@
     "serve": "node src/server/server.js",
     "dev": "webpack -d --watch",
     "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/karma/bin/karma start karma.conf.js"
   },
   "repository": {
     "type": "git",
@@ -34,12 +34,24 @@
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
+    "react-transition-group": "^2.2.1",
     "redux": "^3.7.2",
     "redux-devtools": "^3.4.1",
     "serve-static": "^1.13.1",
     "webpack": "^3.10.0"
   },
   "dependencies": {
+    "chai": "^4.1.2",
+    "jasmine": "^2.9.0",
+    "karma": "^2.0.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1",
+    "karma-mocha": "^1.3.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.9",
+    "mocha": "^5.0.0",
     "react-router": "^4.2.0"
   }
 }

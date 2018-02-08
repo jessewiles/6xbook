@@ -1,17 +1,15 @@
-import { APPLE_JAX, ALPHA, BETA, DELTA, UPDATE_GREETING } from '../actions'
+import { ALPHA, BETA, DELTA, FLASHER, UPDATE_GREETING } from '../actions'
 
 
-const appleJaxer = (state = {avar: DELTA}, action) => {
+const appleJaxer = (state = {greeting: DELTA}, action) => {
     switch(action.type) {
-        case APPLE_JAX:
-            return {avar: APPLE_JAX}
         case UPDATE_GREETING:
             if (action.noodle === ALPHA)
-                return {avar: BETA}
+                return {greeting: BETA}
             else if (action.noodle === BETA)
-                return {avar: DELTA}
+                return {greeting: DELTA}
             else if (action.noodle === DELTA)
-                return {avar: ALPHA}
+                return {greeting: ALPHA}
         default:
             return state;
     }
