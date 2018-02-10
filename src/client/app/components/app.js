@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Day from './day'
-import Home from './Home'
+import Home from './home'
 
 const App = ({ props }) => {
     return (

@@ -1,13 +1,11 @@
 import { combineReducers } from 'redux'
-import appleJaxer from './appleJaxer'
-import macko from './macko'
 import flashy from './flashy'
+import flipper from './flipper'
 
 
 const sixapp = combineReducers({
-    appleJaxer,
-    macko,
-    flashy
+    flashy,
+    flipper
 })
 
 export default sixapp

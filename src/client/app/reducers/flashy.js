@@ -1,8 +1,7 @@
-import { FLASHER } from '../actions'
+import { FLASH } from '../actions'
 
 const flasher = (state = {message: ""}, action) => {
-    if (action.type === FLASHER)
-        console.log(action.message)
+    if (action.type === FLASH)
         return {message: action.message}
     return state
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router } from 'react-router-dom'
-import App from './App'
+import { HashRouter as Router } from 'react-router-dom'
+import App from './app'
 
 const Root = ({ store }) => (
   <Provider store={store}>

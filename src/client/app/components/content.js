@@ -1,41 +1,44 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { greet, flash } from '../actions'
+import { flip, FRONT_PAGESIDE } from '../actions'
 import Daygrid from './daygrid'
 
 class Content extends Component {
     constructor(props) {
         super(props)
-        this.sayHello = this.sayHello.bind(this);
+        this.flipPage = this.flipPage.bind(this)
     }
 
     static propTypes() {
         return {
-            greeting: PropTypes.string.isRequired,
+            pageside: PropTypes.string.isRequired,
         }
     }
 
-    sayHello(evnt) {
-        this.props.dispatch(greet(this.props.greeting))
-        this.props.dispatch(flash(this.props.greeting))
+    flipPage(evnt) {
+        console.log(evnt.target.value)
+        this.props.dispatch(flip(evnt.target.value))
     }
 
     render() {
         return (
-        <div id="content">
-            <h2> { this.props.greeting } </h2>
-            <input type="button" className="switch" value={this.props.greeting} onClick={this.sayHello} />
-            <Daygrid />
-        </div>
+          <div id="content">
+            <input
+                type="button"
+                className="switch"
+                value={this.props.pageside}
+                onClick={this.flipPage} />
+            <Daygrid pageside={this.props.pageside} />
+          </div>
         )
     }
 }
 
 function mapStateToProps(state) {
-    const { appleJaxer } = state
+    const { flipper } = state
     return {
-        greeting: appleJaxer.greeting
+        pageside: flipper.pageside
     }
 }
 

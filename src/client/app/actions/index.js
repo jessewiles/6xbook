@@ -1,18 +1,15 @@
-'use strict';
+'use strict'
 
-export const ALPHA = "ALPHA"
-export const BETA = "BETA"
-export const DELTA = "DELTA"
 export const FLASH = "FLASH"
-export const UPDATE_GREETING = "UPDATE_GREETING"
+export const FLIP_PAGE = "FLIP_PAGE"
+export const FRONT_PAGESIDE = "FRONT"
+export const BACK_PAGESIDE = "BACK"
 
-export function greet(greeting) {
-    return {
-        type: UPDATE_GREETING,
-        noodle: greeting 
-    }
-}
 
 export function flash(message) {
     return { type: FLASH, message }
+}
+
+export function flip(pageside) {
+    return { type: FLIP_PAGE, pageside }
 }
