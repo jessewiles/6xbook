@@ -17,17 +17,14 @@ class Content extends Component {
     }
 
     flipPage(evnt) {
-        console.log(evnt.target.value)
-        this.props.dispatch(flip(evnt.target.value))
+        this.props.dispatch(flip(this.props.pageside))
     }
 
     render() {
         return (
           <div id="content">
             <input
-                type="button"
-                className="switch"
-                value={this.props.pageside}
+                type="button" className="switch" value="Flip"
                 onClick={this.flipPage} />
             <Daygrid pageside={this.props.pageside} />
           </div>

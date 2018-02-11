@@ -5,7 +5,7 @@ import Flasher from './flasher'
 import FRONT_PAGESIDE from '../actions'
 import SiteTitle from './site-title'
 
-const Day = ({props}) => {
+const Day = (props) => {
     return (
       <div id="page">
         <SiteTitle />

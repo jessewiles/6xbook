@@ -16,6 +16,11 @@ const app = express()
 const srcDir = path.dirname(__dirname)
 const appDir = path.join(srcDir, 'client', 'public')
 
+app.use('/days/', (req, res) => {
+    console.log('handled')
+    res.set('Content-Type', 'application/json')
+    res.send(JSON.stringify(['7', '8', '9']))
+})
 app.use(express.static(appDir))
 
 
