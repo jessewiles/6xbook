@@ -1,4 +1,5 @@
 'use strict';
+var webpackConfig = require('./webpack.config');
 
 module.exports = function(config) {
   config.set({
@@ -14,18 +15,22 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'src/client/app/**/*.spec.js'
+        'src/client/app/**/*.specs.js'
     ],
 
 
     // list of files to exclude
-    exclude: [ ],
+    exclude: [ 'node_modules' ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: 
     //      https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: { },
+    preprocessors: { 
+       'spec.webpack.js': ['webpack'],
+        '**/*.specs.js': ['webpack'],
+       '**/*.js': ['sourcemap'],
+    },
 
 
     // test results reporter to use
@@ -56,12 +61,14 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: 
     //  https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false,
+
+    webpack: webpackConfig,
 
     webpackServer: {
             noInfo: true // Don't spam the console when running in karma!
@@ -69,7 +76,7 @@ module.exports = function(config) {
 
     plugins: [
         'karma-mocha', 'karma-webpack', 'karma-sourcemap-loader',
-        'karma-phantomjs-launcher'
+        'karma-chrome-launcher'
     ]
   });
 };
