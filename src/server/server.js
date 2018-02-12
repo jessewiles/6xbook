@@ -1,0 +1,20 @@
+'use strict'
+
+const express = require('express')
+const fs = require('fs')
+const path = require('path')
+
+const app = express()
+
+const srcDir = path.dirname(__dirname)
+const appDir = path.join(srcDir, 'client', 'public')
+
+app.use('/days/', (req, res) => {
+    console.log('handled')
+    res.set('Content-Type', 'application/json')
+    res.send(JSON.stringify(['7', '8', '9']))
+})
+app.use(express.static(appDir))
+
+
+app.listen(7000, () => console.log('6xapp listening on port 7000.'))

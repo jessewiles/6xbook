@@ -1,0 +1,197 @@
+@-webkit-keyframes today-glow {
+    from { border: 5px solid #eee; }
+    to { border: 5px solid #ccf; }
+}
+@keyframes today-glow {
+    from { border: 5px solid #eee; }
+    to { border: 5px solid #ccf; }
+}
+.today{
+    -webkit-animation: today-glow 2s infinite;
+    animation: today-glow 2s infinite;
+}
+html,body {
+    margin: 0px;
+    height: 90%;
+}
+#header {
+    border-bottom: 3pt solid #222;
+    width: 100%;
+    line-height: 15pt;
+    height: 30pt;
+}
+#header .site-title {
+    color: white;
+    float: left;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    margin-left: 6pt;
+    margin-top: 6pt;
+    font-size: large;
+}
+#header .menu-item {
+    display: inline-block;
+    float: right;
+    margin-right: 12pt;
+    margin-top: 6pt;
+    font-size: small;
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+#header a {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+#flash-wrapper {
+    height: 15px;
+    min-height: 15px;
+    text-align: center;
+    font-size: smaller;
+    color: blue;
+}
+.flash {
+    color: brown;
+}
+.flash-enter {
+    opacity: 0.01;
+}
+.flash-enter.flash-enter-active {
+    opacity: 1;
+    transition: opacity 4000ms ease-out;
+}
+.flash-exit {
+    opacity: 1;
+}
+.flash-exit.flash-exit-active {
+    opactiy: 0.01;
+    transition: opacity 4000ms ease-in;
+}
+#content {
+    position: relative;
+    min-height: 80%;
+    margin: 1em;
+}
+#footer {
+    text-align: center;
+    font-size: small;
+}
+
+.aday {
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    padding-top: 0.4em;
+    padding-bottom: 0.2em;
+    float: left;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    margin-right: 0.4em;
+    margin-bottom: 0.3em;
+}
+
+#days a {
+     color: black;
+     text-decoration: none;
+}
+#splash {
+    margin: auto;
+    min-width: 300px;
+    width: 80%;
+    text-align: center;
+    border-radius: 12px;
+    height: 80%;
+    padding: 2.5em;
+}
+#splash td {
+    width: 50%;
+    vertical-align: middle;
+}
+.title {
+    font-weight: bold;
+}
+.large {
+    font-size: 96pt; 
+}
+.doitnow {
+    color: black;
+    font-size: x-large;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 1.2em;
+}
+.graphic {
+    width: 50%;
+    height: 50%;
+}
+.infobox {
+    display: table;
+    margin: auto;
+    padding: 1.5em;
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 6px;
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: smaller;
+    text-align: left;
+}
+/* months */
+/*        */
+.january {
+    background-color: #fcc;
+    border: 5px solid #ebb;
+}
+.february {
+    background-color: #ffc;
+    border: 5px solid #eeb;
+}
+.march {
+    background-color: #cfc;
+    border: 5px solid #beb;
+}
+.april {
+    background-color: #ccf;
+    border: 5px solid #bbe;
+}
+.may {
+    background-color: #ccc;
+    border: 5px solid #bbb;
+}
+.june {
+    background-color: #cff;
+    border: 5px solid #bee;
+}
+.july {
+    background-color: #fff;
+    border: 5px solid #eee;
+}
+.august {
+    background-color: #fad;
+    border: 5px solid #e9c;
+}
+.september {
+    background-color: #daf;
+    border: 5px solid #c9e;
+}
+.october {
+    background-color: #afd;
+    border: 5px solid #9ec;
+}
+.november {
+    background-color: #fda;
+    border: 5px solid #ec9;
+}
+.december {
+    background-color: #dfa;
+    border: 5px solid #ce9;
+}
+.fdata {
+    text-align: center;
+    font-size: smaller;
+}
+#dci_logo img {
+    display: block;
+    margin: auto;
+    margin-top: 0.3in;
+    width: 12%;
+    height: 12%;
+}
