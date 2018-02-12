@@ -18,7 +18,6 @@ export function flip(pageside) {
 
 export function requestDays() {
     return (dispatch) => {
-        console.log('dispatching...')
         return fetch('/days/')
             .then(res => res.json())
             .then(data => dispatch(receiveDays(data)))

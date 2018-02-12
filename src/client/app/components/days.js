@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom' // eslint-disable-line no-unused-vars
 
 import { requestDays } from '../actions'
 
@@ -13,7 +13,7 @@ class Days extends Component {
     static propTypes() {
         return {
             hasRequested: this.propTypes.bool.isRequired,
-            days: this.propTypes.array.isRequired,
+            days: PropTypes.array.isRequired,
         }
     }
 
@@ -38,7 +38,6 @@ class Days extends Component {
 
 function mapStateToProps(state) {
     const { days } = state
-    console.log(days)
     return {
         hasRequested: days.hasRequested || false,
         days: days.days || []

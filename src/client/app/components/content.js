@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { flip, FRONT_PAGESIDE } from '../actions'
-import Daygrid from './daygrid'
+import { flip } from '../actions'
+import Daygrid from './daygrid' // eslint-disable-line no-unused-vars
 
 class Content extends Component {
     constructor(props) {
@@ -16,7 +16,7 @@ class Content extends Component {
         }
     }
 
-    flipPage(evnt) {
+    flipPage() {
         this.props.dispatch(flip(this.props.pageside))
     }
 

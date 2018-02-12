@@ -1,11 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Content from './content'
-import Flasher from './flasher'
-import FRONT_PAGESIDE from '../actions'
-import SiteTitle from './site-title'
+import React from 'react' // eslint-disable-line no-unused-vars
+import Content from './content' // eslint-disable-line no-unused-vars
+import Flasher from './flasher' // eslint-disable-line no-unused-vars
+import SiteTitle from './site-title' // eslint-disable-line no-unused-vars
 
-const Day = (props) => {
+const Day = () => {
     return (
       <div id="page">
         <SiteTitle />

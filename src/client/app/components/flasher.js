@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 import PropTypes from 'prop-types'
 import { flash } from '../actions'
 import { connect } from 'react-redux'
-import { CSSTransition } from 'react-transition-group'
+import { CSSTransition } from 'react-transition-group' // eslint-disable-line no-unused-vars
 
 
 class Flasher extends Component {
@@ -33,7 +33,7 @@ class Flasher extends Component {
     }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
     const { flashy } = state
     return {
         message: flashy.message

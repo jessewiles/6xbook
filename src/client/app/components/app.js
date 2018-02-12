@@ -1,10 +1,10 @@
-import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import React from 'react' // eslint-disable-line no-unused-vars
+import { Route, Switch } from 'react-router-dom' // eslint-disable-line no-unused-vars
 import Day from './day'
-import Days from './days'
+import Days from './days' // eslint-disable-line no-unused-vars
 import Home from './home'
 
-const App = (props) => {
+const App = () => {
     return (
       <Switch>
         <Route exact path="/" component={Home} />

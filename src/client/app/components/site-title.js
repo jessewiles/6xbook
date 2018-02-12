@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react' // eslint-disable-line no-unused-vars
+import { Link } from 'react-router-dom' // eslint-disable-line no-unused-vars
 
 const SiteTitle = () => {
     return (

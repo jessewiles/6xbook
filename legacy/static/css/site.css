@@ -6,7 +6,6 @@
     from { border: 5px solid #eee; }
     to { border: 5px solid #ccf; }
 }
-
 .today{
     -webkit-animation: today-glow 2s infinite;
     animation: today-glow 2s infinite;
@@ -49,6 +48,9 @@ html,body {
     text-align: center;
     font-size: smaller;
     color: blue;
+}
+.flash {
+    display: none;
 }
 #content {
     position: relative;
