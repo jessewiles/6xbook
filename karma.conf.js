@@ -15,7 +15,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        'src/client/app/**/*.specs.js'
+        './node_modules/babel-polyfill/browser.js',
+        './src/client/app/**/*.specs.js'
     ],
 
 
@@ -61,12 +62,12 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: 
     //  https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
 
     webpack: webpackConfig,
 
@@ -76,7 +77,7 @@ module.exports = function(config) {
 
     plugins: [
         'karma-mocha', 'karma-webpack', 'karma-sourcemap-loader',
-        'karma-chrome-launcher'
+        'karma-phantomjs-launcher'
     ]
   });
 };
