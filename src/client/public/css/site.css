@@ -6,7 +6,6 @@
     from { border: 5px solid #eee; }
     to { border: 5px solid #ccf; }
 }
-
 .today{
     -webkit-animation: today-glow 2s infinite;
     animation: today-glow 2s infinite;
@@ -49,6 +48,23 @@ html,body {
     text-align: center;
     font-size: smaller;
     color: blue;
+}
+.flash {
+    color: brown;
+}
+.flash-enter {
+    opacity: 0.01;
+}
+.flash-enter.flash-enter-active {
+    opacity: 1;
+    transition: opacity 4000ms ease-out;
+}
+.flash-exit {
+    opacity: 1;
+}
+.flash-exit.flash-exit-active {
+    opactiy: 0.01;
+    transition: opacity 4000ms ease-in;
 }
 #content {
     position: relative;
