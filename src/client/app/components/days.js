@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom' // eslint-disable-line no-unused-vars
 
 import { requestDays } from '../actions'
+import Flasher from './flasher'
+import SiteTitle from './site-title'
 
 class Days extends Component {
     constructor(props) {
@@ -29,6 +31,9 @@ class Days extends Component {
         })
         return (
         <div>
+          <SiteTitle />
+          <Flasher message="" />
+ 
           <ul>
             {formatted_days}
           </ul>
