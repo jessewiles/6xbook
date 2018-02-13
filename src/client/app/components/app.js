@@ -9,9 +9,9 @@ const App = () => {
     return (
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route path="/days/:daystring" component={Day} />
         <Route path="/days/" render={(props) => 
             (<Days {...props} days={[]} hasRequested={false} />)} />
-        <Route path="/days/:daystring" component={Day} />
         <Route path="/panel" component={Panelish} />
       </Switch>
     )
