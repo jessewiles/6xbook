@@ -4,5 +4,6 @@ Thumbs.db
 package-lock.json
 src/client/public/bundle.js
 src/npm-debug.log
+src/6xbook.db
 
 node_modules
