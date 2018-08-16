@@ -195,3 +195,7 @@ html,body {
     width: 12%;
     height: 12%;
 }
+.container {
+    width: 80%;
+    border: 1px solid #333;
+}

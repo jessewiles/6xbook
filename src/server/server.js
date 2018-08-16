@@ -9,11 +9,12 @@ const app = express()
 const srcDir = path.dirname(__dirname)
 const appDir = path.join(srcDir, 'client', 'public')
 
-app.use('/days/', (req, res) => {
-    console.log('handled')
-    res.set('Content-Type', 'application/json')
-    res.send(JSON.stringify(['7', '8', '9']))
-})
+app.use((req, res, next)  => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.use(express.static(appDir))
 
 
