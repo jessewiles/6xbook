@@ -26,7 +26,7 @@ class Days extends Component {
     render() {
         let formatted_days= this.props.days.map((item) => {
             return (
-                <li key={'days:' + item.ID}><Link to={`/days/${item.Day}`}>{item.Day}</Link></li>
+                <li key={item.id}><Link to={`/days/${item.label}`}>{item.label}</Link></li>
             )
         })
         return (

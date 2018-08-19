@@ -2,7 +2,7 @@ import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { flip } from '../actions'
-import Xgrid from './xgrid' // eslint-disable-line no-unused-vars
+import Entries from './entries' // eslint-disable-line no-unused-vars
 
 class Content extends Component {
     constructor(props) {
@@ -28,7 +28,7 @@ class Content extends Component {
             <input
                 type="button" className="switch" value="Flip"
                 onClick={this.flipPage} />
-            <Xgrid day={this.props.day} />
+            <Entries day={this.props.day} />
           </div>
         )
     }

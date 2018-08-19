@@ -207,3 +207,17 @@ html, body {
     margin-left: 1em;
     margin-right: 1em;
 }
+
+.entry {
+    margin-bottom: 3em;
+    border-bottom: 6px solid #333;
+}
+input.add-vow {
+    border: 1px solid black;
+    padding: 1em;
+    background-color: white;
+    float: right;
+}
+input.add-vow:disabled {
+    background-color: #ccc;
+}
